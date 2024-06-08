@@ -28,6 +28,9 @@ async function createTableIfNotExists() {
 
 const app = express();
 
+// Middleware to parse JSON data  
+app.use(express.json());  
+
 app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
