@@ -40,6 +40,18 @@ app.get('/crash', (req, res) => {
   process.exit(1);
 });
 
+app.get('/messages', async (req, res) => { 
+  try {
+    const client = await pool.connect();  
+    const result = await client.query('SELECT * FROM Messages');  
+    client.release();  
+    res.json(result.rows);  
+  } catch (error) {  
+    console.error('Error getting data:', error);  
+    res.status(500).json({ error: 'Internal Server Error' });  
+  }  
+});
+
 // Endpoint to handle POST requests  
 app.post('/messages', async (req, res) => {  
   try {  
