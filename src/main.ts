@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
-app.listen(port, host, () => {
+app.listen(port, () => {
   console.log(`[ ready ] http://${host}:${port}`);
 });
