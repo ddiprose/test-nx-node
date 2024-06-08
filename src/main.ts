@@ -35,6 +35,11 @@ app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
+app.get('/crash', (req, res) => {
+  res.send({ message: 'Crashing now' });
+  process.exit(1);
+});
+
 // Endpoint to handle POST requests  
 app.post('/messages', async (req, res) => {  
   try {  
